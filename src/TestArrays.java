@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @author Sergei Gots
  */
-public class Test {
+public class TestArrays {
     enum ListsTestEnum {
         ADD,
         ADD_TO_THE_BEGIN,
