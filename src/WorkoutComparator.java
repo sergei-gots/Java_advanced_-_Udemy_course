@@ -67,16 +67,16 @@ public class WorkoutComparator {
         System.out.println("numbers = " + numbers);
 
         //Let's sort our own Objects:
-        List<Person> people = new ArrayList<>();
-        people.add(new Person(3, "Mike"));
-        people.add(new Person(2, "Katy"));
-        people.add(new Person(1, "Bob"));
+        List<PersonForComparator> people = new ArrayList<>();
+        people.add(new PersonForComparator(3, "Mike"));
+        people.add(new PersonForComparator(2, "Katy"));
+        people.add(new PersonForComparator(1, "Bob"));
 
         //Let's sort people by their id:
-        Collections.sort(people, new Comparator<Person>() {
+        Collections.sort(people, new Comparator<PersonForComparator>() {
             @Override
-            public int compare(Person o1, Person o2) {
-                if(o1.getId()>o2.getId()){
+            public int compare(PersonForComparator o1, PersonForComparator o2) {
+                if(o1.getId() > o2.getId()){
                     return 1;
                 } else if (o1.getId()<o2.getId()) {
                     return -1;
@@ -90,11 +90,11 @@ public class WorkoutComparator {
     }
 }
 
-class Person {
+class PersonForComparator {
     private int id;
     private String name;
 
-    public Person(int id, String name) {
+    public PersonForComparator(int id, String name) {
         this.id = id;
         this.name = name;
     }
