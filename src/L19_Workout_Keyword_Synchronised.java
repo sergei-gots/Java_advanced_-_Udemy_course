@@ -12,12 +12,16 @@ public class L19_Workout_Keyword_Synchronised {
         workout.doWork();
     }
 
+    public synchronized void increment(){
+        counter++;
+    }
     public void doWork() {
         Thread thread1 = new Thread(new Runnable(){
             @Override
             public void run() {
                 for(int i = 0; i<10000; i++) {
-                    counter++;
+                    //counter++;
+                    increment();
                     if (counter == 5000) {
                         System.out.println("thread1: counter == " + counter) ;
                     }
@@ -29,7 +33,8 @@ public class L19_Workout_Keyword_Synchronised {
             @Override
             public void run() {
                 for(int i = 0; i<10000; i++) {
-                    counter++;
+                    //counter++;
+                    increment();
                     if (counter == 5000) {
                         System.out.println("thread2: counter == " + counter);
                     }
