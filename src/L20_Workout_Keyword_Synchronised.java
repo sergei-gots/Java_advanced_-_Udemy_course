@@ -3,18 +3,20 @@
  * To the Lesson 19 "Keyword Synchronised" of the video course "Java Advanced" by Neil Alishev (Udemy)
  */
 
-public class L19_Workout_Keyword_Synchronised {
+public class L20_Workout_Keyword_Synchronised {
 
     private int counter;
 
     public static void main(String[] args) {
-        L19_Workout_Keyword_Synchronised workout = new L19_Workout_Keyword_Synchronised();
+        L20_Workout_Keyword_Synchronised workout = new L20_Workout_Keyword_Synchronised();
         workout.doWork();
     }
 
-    public synchronized void increment(){
+    public void increment(){
 
-        counter++;
+        synchronized(this) {
+            counter++;
+        }
     }
 
     public void doWork() {
