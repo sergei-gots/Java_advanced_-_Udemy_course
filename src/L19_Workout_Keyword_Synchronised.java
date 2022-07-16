@@ -13,8 +13,10 @@ public class L19_Workout_Keyword_Synchronised {
     }
 
     public synchronized void increment(){
+
         counter++;
     }
+
     public void doWork() {
         Thread thread1 = new Thread(new Runnable(){
             @Override
