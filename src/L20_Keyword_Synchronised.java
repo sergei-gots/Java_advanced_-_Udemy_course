@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class L20_Workout_Keyword_Synchronised {
+public class L20_Keyword_Synchronised {
 
     private int counter;
 
     public static void main(String[] args) {
 
         if(false) {
-            new L20_Workout_Keyword_Synchronised().performWork();
+            new L20_Keyword_Synchronised().performWork();
         }
         else {
             new Worker().performWork();
@@ -78,6 +78,10 @@ class Worker {
     private Random random = new Random();
     private List<Integer> list1 = new ArrayList<>();
     private List<Integer> list2 = new ArrayList<>();
+
+    private Object lock1 = new Object();
+    private Object lock2 = new Object();
+
     public void performWork(){
         long before = System.currentTimeMillis();
 
@@ -123,27 +127,31 @@ class Worker {
             addToList2();
         }
     }
-    private synchronized void addToList1() {
+    private void addToList1() {
 
-        try {
-            Thread.sleep(1);
+        synchronized (lock1) {
+            try {
+                Thread.sleep(1);
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            list1.add(random.nextInt(100));
         }
-
-        list1.add(random.nextInt(100));
     }
 
-    private synchronized void addToList2() {
+    private void addToList2() {
 
-        try {
-            Thread.sleep(1);
+        synchronized(lock2) {
+            try {
+                Thread.sleep(1);
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            list2.add(random.nextInt(100));
         }
-
-        list2.add(random.nextInt(100));
     }
 }

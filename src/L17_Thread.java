@@ -2,7 +2,7 @@
  * Lesson 17. Introducing in multithreading in Java.
  */
 
-public class L17_Workout_Class_Thread {
+public class L17_Thread {
     public static void main(String[] args) throws InterruptedException {
         //workoutMyThread();
         workoutRunnable();

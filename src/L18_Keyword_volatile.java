@@ -4,7 +4,7 @@
 
 import java.util.Scanner;
 
-public class L18_Workout_Keyword_volatile {
+public class L18_Keyword_volatile {
     public static void main(String[] args) {
         MyThread1 myThread1 = new MyThread1();
         myThread1.start();
