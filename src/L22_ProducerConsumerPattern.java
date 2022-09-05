@@ -9,7 +9,7 @@ import java.util.concurrent.BlockingQueue;
 
 public class L22_ProducerConsumerPattern {
 
-    //Blocking queue as all the classses from the package java.util.concurrent is Thread safe
+    //Blocking queue as all the classes from the package java.util.concurrent is Thread safe
     //Adjusted to work with several threads
     static BlockingQueue <Integer> queue = new ArrayBlockingQueue <>(10);
 
