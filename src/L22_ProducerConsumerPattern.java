@@ -1,6 +1,6 @@
 /*
         * Copyright (c) 2022.
-        * To the Lesson 22 "Patter Procuder-Consumer" of the video course "Java Advanced" by Neil Alishev (Udemy)
+        * To the Lesson 22 "Pattern Producer-Consumer" of the video course "Java Advanced" by Neil Alishev (Udemy)
         */
 
 import java.util.Random;
