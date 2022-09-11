@@ -5,6 +5,7 @@
  *                              Object.notify()" 
  * To the video course "Java Advanced" by Neil Alishev (Udemy).
  *
+ *      Low-level implementation with the wait and notify - methods
  *      Wait-and-Notify protocol is a low-level protocol of inter-thread coordination.
  *      Methods Wait-and-Notify are linked to the Object-instance
  *      Note that when you synchronize your block on another object-instance.
