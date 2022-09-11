@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * @author Sergei Gots
  */
-public class TestMaps {
+public class L7_Maps {
 
     public static void main(String[] args) {
         testMaps();

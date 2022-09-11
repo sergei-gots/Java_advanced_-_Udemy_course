@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -7,7 +6,7 @@ import java.util.List;
  * To the Lesson 16 "Interface Iterable"
  **/
 
-public class WorkoutIterable {
+public class L16_Iterable {
     public static void main(String[] args) {
         List<Integer> list = new ArrayList<>();
         list.add(1);

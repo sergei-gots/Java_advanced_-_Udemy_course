@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * @author Sergei Gots
  */
-public class TestSets {
+public class L8_Sets {
 
     public static void main(String[] args) {
 

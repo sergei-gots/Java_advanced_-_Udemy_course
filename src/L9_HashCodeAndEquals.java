@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class TestHashCodeAndEquals {
+public class L9_HashCodeAndEquals {
     public static void main(String[] args) {
         Set<String> set = new HashSet<>();
         //showMapAndSet();

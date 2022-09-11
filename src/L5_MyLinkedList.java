@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class MyLinkedList {
+public class L5_MyLinkedList {
 
     private Node head;
     private int size;

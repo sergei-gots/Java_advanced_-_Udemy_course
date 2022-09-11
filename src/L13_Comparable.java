@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class WorkoutComparable {
+public class L13_Comparable {
 
     public static void main(String[] args) {
         List<Person1> peopleList = new ArrayList<>();

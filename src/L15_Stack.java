@@ -5,7 +5,7 @@ import java.util.Stack;
  * Lesson 15. Class Stack
  */
 
-public class WorkoutStack {
+public class L15_Stack {
 
     public static void main(String[] args) {
 

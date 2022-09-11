@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @author Sergei Gots
  */
-public class TestArrays {
+public class L5_Arrays {
     enum ListsTestEnum {
         ADD,
         ADD_TO_THE_BEGIN,
@@ -14,26 +14,26 @@ public class TestArrays {
     }
 
     public static void main(String[] args) {
-        MyLinkedList myLinkedList = new MyLinkedList();
-        myLinkedList.add(1);
-        myLinkedList.add(2);
-        myLinkedList.add(10);
+        L5_MyLinkedList l5_MyLinkedList = new L5_MyLinkedList();
+        l5_MyLinkedList.add(1);
+        l5_MyLinkedList.add(2);
+        l5_MyLinkedList.add(10);
 
-        System.out.println("myLinkedList = " + myLinkedList);
-        System.out.println(myLinkedList.get(0));
-        System.out.println(myLinkedList.get(1));
-        System.out.println(myLinkedList.get(2));
+        System.out.println("myLinkedList = " + l5_MyLinkedList);
+        System.out.println(l5_MyLinkedList.get(0));
+        System.out.println(l5_MyLinkedList.get(1));
+        System.out.println(l5_MyLinkedList.get(2));
         //Next line causes IllegalArgumentException:
         //System.out.println(myLinkedList.get(3));
 
-        myLinkedList.remove(1);
-        System.out.println("myLinkedList = " + myLinkedList);
+        l5_MyLinkedList.remove(1);
+        System.out.println("myLinkedList = " + l5_MyLinkedList);
 
-        myLinkedList.remove(1);
-        System.out.println("myLinkedList = " + myLinkedList);
+        l5_MyLinkedList.remove(1);
+        System.out.println("myLinkedList = " + l5_MyLinkedList);
 
-        myLinkedList.remove(0);
-        System.out.println("myLinkedList = " + myLinkedList);
+        l5_MyLinkedList.remove(0);
+        System.out.println("myLinkedList = " + l5_MyLinkedList);
 
 
     }

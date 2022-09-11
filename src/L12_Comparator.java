@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class WorkoutComparator {
+public class L12_Comparator {
 
     public static void main(String[] args) {
         List<String> animals = new ArrayList<>();
