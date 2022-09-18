@@ -15,7 +15,6 @@ public class L26_ReentrantLock {
 
     static final int THREADS_PAIRS_COUNT = 10;
     public static void main(String[] args) throws InterruptedException {
-
         Task task = new Task();
 
         ExecutorService executorService = Executors.newFixedThreadPool(THREADS_PAIRS_COUNT);
