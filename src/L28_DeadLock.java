@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2022.
- * To the Lesson 28 "Deadlock-state".
+ * To the Lesson 28 "Deadlock-state: Method Lock.tryLock()".
  * To the video course "Java Advanced" by Neil Alishev (Udemy).
  */
 
