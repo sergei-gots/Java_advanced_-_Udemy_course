@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2022.
- * To the Lesson 30 "Interfaces Callable and Future.
+ * To the Lesson 30 "Interfaces Callable and Future".
  * To the video course "Java Advanced" by Neil Alishev (Udemy).
  */
 
