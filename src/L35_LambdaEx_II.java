@@ -5,9 +5,7 @@
 * To the video course "Java Advanced" by Neil Alishev (Udemy).
 */
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class L35_LambdaEx_II {
@@ -134,11 +132,44 @@ public class L35_LambdaEx_II {
         System.out.println();
         System.out.println();
 
-        System.out.println("IV. REDUCE");
-        int sum = Arrays.stream(arr).reduce((acc, b) -> acc + b).getAsInt();
-        int mult = list.stream().reduce((acc, b)-> acc*b).get();
-        System.out.println("sum = " + sum);
-        System.out.println("mult = " + mult);
+        System.out.println("""
+                           IV. REDUCE
+                           /* At the 1st iteration by default acc = x[0] and this iteration includes x[0] and [1]
+                            * We can assign another initial value to the 'acc' with a param 'identity':
+                            * java.util.OptionalInt  reduce((int identity, (IntBinaryOperator op)
+                            *           of a class java.util.stream.IntStream.
+                            * In such case:
+                            *   - 1st iteration involves acc = identity and x[0]
+                            *   - we don't call  
+                            *      public int getAsInt() 
+                            *           of a class java.util.OptionalInt.
+                            *""");
 
+
+        int sum = Arrays.stream(arr).reduce((acc, b) -> acc + b).getAsInt();
+        int product = list.stream().reduce((acc, b)-> acc*b).get();
+        System.out.println("sum = " + sum);
+        System.out.println("product = " + product);
+
+        System.out.println("""
+            Let's:
+                1) Filter odd numbers in array;
+                2) Multiply them by 2":   """);
+        arr = Arrays.stream(arr).filter(a->(a%2)!=0).map(a->a*2).toArray();
+        printResultArray("'filter(a->(a%2)==0).map(a->a*2)':");
+
+        Set<Integer> setSource = new HashSet<>();
+        for(int i = 0; i < 10;i++) {
+            setSource.add(i+1);
+        }
+        Set <Integer> setResult = setSource.stream().map(a->a*3).collect(Collectors.toSet());
+        System.out.println("""
+                Applying a method 
+                    <R> Stream<R>  map(java.util.Function <? super T, extends R>mapper)
+                        of a class java.util.Stream<T>
+                to a set-instance.
+                A function will be 'a->a*3':""");
+        System.out.println("setSource = " + setSource);
+        System.out.println("setResult = " + setResult);
     }
 }
