@@ -79,7 +79,7 @@ public class L35_LambdaEx_II {
         }
     }
     public static void main(String[] args) {
-
+        System.out.println("*** OPERATIONS ON STREAM *****");
         System.out.println("I. MAPPING:");
         for(int i=0; i<10; i++) {
             arr[i]*=2;                           //Modify each item of them with the formula x=x*2
@@ -129,7 +129,16 @@ public class L35_LambdaEx_II {
         System.out.println();
 
         System.out.println("Let's print all numbers from a List 'list':");
-        list.stream().forEach(a-> System.out.print(a + " "));
+        //Let's use here a radical contraction
+        list.stream().forEach(System.out::print);
         System.out.println();
+        System.out.println();
+
+        System.out.println("IV. REDUCE");
+        int sum = Arrays.stream(arr).reduce((acc, b) -> acc + b).getAsInt();
+        int mult = list.stream().reduce((acc, b)-> acc*b).get();
+        System.out.println("sum = " + sum);
+        System.out.println("mult = " + mult);
+
     }
 }
