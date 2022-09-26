@@ -1,10 +1,8 @@
 import java.util.Arrays;
 
 public class L5_MyLinkedList {
-
     private Node head;
     private int size;
-
     public void add(int value) {
         //if it's the first add within the list
         if(head == null) {
@@ -14,10 +12,8 @@ public class L5_MyLinkedList {
             while (temp.getNext() != null) {
                 temp = temp.getNext();
             }
-
             temp.setNext(new Node(value));
         }
-
         size++;
     }
 
@@ -38,10 +34,11 @@ public class L5_MyLinkedList {
                 + " but size of the list = " + size);
     }
 
-    public void remove(int index) {
+    public int remove(int index) {
         int currentIndex = 0;
         Node temp = head;
         Node tempPrev = null;
+        int value;
 
         while (temp != null) {
             if( currentIndex == index) {
@@ -51,15 +48,13 @@ public class L5_MyLinkedList {
                     head = temp.getNext();
                 }
                 size--;
-                return;
+                return temp.getValue();
             } else {
                 tempPrev = temp;
                 temp = temp.getNext();
                 currentIndex++;
             }
         }
-
-
         throw new IllegalArgumentException("Attempt to remove an item with the index " + index
                 + " but size of the list = " + size);
     }
@@ -81,23 +76,18 @@ public class L5_MyLinkedList {
     private static class Node {
         private int value;
         private Node next;
-
         public Node(int value) {
             this.value = value;
         }
-
         public int getValue() {
             return value;
         }
-
         public void setValue(int value) {
             this.value = value;
         }
-
         public Node getNext() {
             return next;
         }
-
         public void setNext(Node next) {
             this.next = next;
         }
