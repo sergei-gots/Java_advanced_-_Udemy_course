@@ -11,75 +11,125 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class L35_LambdaEx_II {
+
+    //Let's have an array and ArrayList of integers:
+    static final int INITIAL_CAPACITY = 10;
+    static  int [] arr = new int[INITIAL_CAPACITY];
+    static  List<Integer> list = new ArrayList<>(INITIAL_CAPACITY);
+
+    static {
+        initData();
+        printResult("Source data:");
+    }
+
+    static void allocateData() {
+        arr = new int[INITIAL_CAPACITY];
+        list = new ArrayList<>(10);
+    }
+    static void initData() {
+        if(list.isEmpty()) {
+            for(int i=0; i<INITIAL_CAPACITY; i++) {
+                int value = i+1;
+                list.add(value);
+                arr[i]=value;
+            }
+        }
+        for(int i=0; i<INITIAL_CAPACITY; i++) {
+            int value = i+1;
+            arr[i]=value;
+            list.set(i, value);
+        }
+    }
+    static void resetData() {
+        if(arr.length!=INITIAL_CAPACITY || list.size()!=INITIAL_CAPACITY) {
+            //System.out.println("ALLOCATION: arr.length/list.size()" + arr.length + '/' + list.size());
+            allocateData();
+        }
+        initData();
+    }
+
+    static void printResult(String header) {
+        if(header != null) {
+            System.out.println(header);
+        }
+        printResultArray("");
+        printResultList("");
+        System.out.println();
+    }
+
+    static void printResultArray(String header) {
+        boolean isUnit = header !=null && header != "";
+        if(isUnit) {
+            System.out.println(header);
+        }
+        System.out.println("Arrays.toString(array) = " + Arrays.toString(arr));
+        if(isUnit) {
+            System.out.println();
+        }
+    }
+
+    static void printResultList(String header) {
+        boolean isUnit = header !=null && header != "";
+        if(isUnit) {
+            System.out.println(header);
+        }
+        System.out.println("list                   = " + list);
+        if(isUnit) {
+            System.out.println();
+        }
+    }
     public static void main(String[] args) {
 
-        //Let's have an array and ArrayList of integers:
-        int [] arr = new int[10];
-        List<Integer> list = new ArrayList<Integer>();
-
-        //Fill them up with values:
-        for(int i=0; i<10; i++) {
-            arr[i]=i+1;
-            list.add(i+1);
-        }
-        System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
-        System.out.println("list                 = " + list);
-        System.out.println();
-
         System.out.println("I. MAPPING:");
-        //Modify each item of them with the formula x=x*2
-        //(with a traditional pathway):
         for(int i=0; i<10; i++) {
-            arr[i]*=2;
-            list.set(i, list.get(i)*2);
+            arr[i]*=2;                           //Modify each item of them with the formula x=x*2
+            list.set(i, list.get(i)*2);          //(with a traditional pathway).
         }
-        System.out.println("x[i]=x[i]*2:");
-        System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
-        System.out.println("list                 = " + list);
+        printResult("x[i]=x[i]*2:");
 
-        //Modify each item of them with the formula x=x*2
-        //(with the LAMBDA-pathway):
-        //a method IntStream map(IntUnaryOperator op) maps IntStream.
-        arr = Arrays.stream(arr).map(a -> a*2).toArray();
-            //This mapper-interface assigns a mapping rule will be applied to the source IntStream:
-            //Interface IntUnaryOperator {
-            //      int applyAsInt(int x);
-            // }
-
+        System.out.println("-- MAPPING with LAMBDA:");
+        resetData();
+        //Let's modify each item with the formula x=x*2 with the LAMBDA-ex
+        //The used mapper-interface assigns a mapping rule will be applied to the source IntStream:
+        //Interface IntUnaryOperator {
+        //      int applyAsInt(int x);
+        // }
+        arr = Arrays.stream(arr).map(a -> a*3).toArray();
         //For a List instances we will apply a method
         //public abstract <R, A> R collect(     java.util.stream.Collector<? super T, A, R> collector )
         //and a FACTORY PATHWAY to get a Collector-interface instance.
-        list = list.stream().map(a -> a*2).collect(Collectors.toList());
-
-        System.out.println("x[i]=x[i}*2");
-        System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
-        System.out.println("list                 = " + list);
-        System.out.println();
+        list = list.stream().map(a -> a*3).collect(Collectors.toList());
+        printResult("x[i]=x[i}*3");
 
         //Let's change all the items of the array 'arr' to '3':
         arr = Arrays.stream(arr).map(a->3).toArray();
-        System.out.println("arr[i]=3");
-        System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
+        printResultArray("x[i]=3");
         //And add to them '1'
         arr = Arrays.stream(arr).map(a->a+1).toArray();
-        System.out.println("arr[i]=arr[i]+1");
-        System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
-        System.out.println();
+        list = list.stream().map(a -> a+1).collect(Collectors.toList());
+        printResult("then x[i]=x[i]+1");
 
         System.out.println("II. FILTERS:");
-        for(int i=0; i<10; i++) {
-            arr[i]=i+1;
-            list.set(i, i+1);
-        }
+        resetData();
         System.out.println("Filter: only even numbers");
         //We use here a method
         //public abstract IntStream filter(java.util.function.IntPredicate predicate )
         //of a class java.util.stream.IntStream
         arr = Arrays.stream(arr).filter(a->a%2==0).toArray();
         list = list.stream().filter(a->a%2==0).collect(Collectors.toList());
-        System.out.println("arr[i] <=> arr[i]%2==0");
-        System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
-        System.out.println("list                 = " + list);
+        printResult("x[i] <=> x[i]%2==0");
+
+        System.out.println("III. FOREACH()-method");
+        resetData();
+        /* IntStream public abstract void forEach(java.util.function.IntConsumer action ) */
+        System.out.println("Let's print all the odd numbers from an Array 'arr':");
+        Arrays.stream(arr).forEach(a-> { if (a%2 == 0)
+                                            System.out.print(a + " ");
+                                        });
+        System.out.println();
+
+        System.out.println("Let's print all numbers from a List 'list':");
+        list.stream().forEach(a-> System.out.print(a + " "));
         System.out.println();
     }
 }
