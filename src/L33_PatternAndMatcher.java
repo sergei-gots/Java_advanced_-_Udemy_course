@@ -19,11 +19,13 @@ public class L33_PatternAndMatcher {
         System.out.println();
 
         //There is a FACTORY-method for a creating an instance of a class will be used
-        Pattern eMail = Pattern.compile("(\\w(\\w|\\d|\\.|-|_)*)@((\\w((\\w|\\d)*))\\.((com|org)))");
+        Pattern patternEMail = Pattern.compile("(\\w(\\w|\\d|\\.|-|_)*)@((\\w((\\w|\\d)*))\\.((com|org)))");
+
         //Matcher is an entity that will work with our text
-        Matcher matcher = eMail.matcher(text);
+        Matcher matcher = patternEMail.matcher(text);
         while(matcher.find()){
             System.out.println("matcher.group() = " + matcher.group());
+
             //group is any group within round brackets () in a RegEx:
             for(int i = 0; i<matcher.groupCount(); i++) {
                 System.out.println("matcher.group(" + i + ") = " + matcher.group(i));
